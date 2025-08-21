@@ -1,0 +1,10 @@
+{
+    "polymod": {
+        "name": "nostalgia",
+        "id": "nostalgia",
+        "author": "DoraChad",
+        "targets": ["0.5.1"],
+        "main": "main.mod.js"
+    },
+    "dependencies": []
+}
