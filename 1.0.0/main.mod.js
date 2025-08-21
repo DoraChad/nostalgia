@@ -15,7 +15,7 @@ class nostalgia extends PolyMod {
               }
               ))
           }
-          loadResource("oldmusic, "https://github.com/DoraChad/nostalgia/raw/refs/heads/main/assets/gathu.flac");
+          loadResource("oldmusic", "https://github.com/DoraChad/nostalgia/raw/refs/heads/main/assets/gathu.flac");
         }
         `);
         polyModLoader.registerFuncMixin("pl", MixinType.REPLACE, `const e = this.getBuffer("music");`, `const e = this.getBuffer("oldmusic");`);
