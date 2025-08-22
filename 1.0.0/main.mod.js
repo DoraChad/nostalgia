@@ -2,10 +2,28 @@ import { PolyMod, MixinType } from "https://pml.orangy.cfd/PolyTrackMods/PolyMod
 
 class nostalgia extends PolyMod { 
     audioURLS = ["https://github.com/DoraChad/nostalgia/blob/main/assets/gathu.flac"];
+    musicBuffer = null;
+    getAudioBuffer(url) {
+        try {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    
+            const response = await fetch(url);
+            const arrayBuffer = await response.arrayBuffer();
+            const audioBuffer = await audioCOntext.decodeAudioData(arrayBuffer);
+
+            return audioBuffer
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+
+    
     init = function(polyModLoader) {
-        polyModLoader.registerClassMixin("gl.prototype", "load", MixinType.INSERT, '{', `ActivePolyModLoader.getMod("nostalgia").audioURLS.forEach(t => {
-            console.log(t);        
-        })`);
+        this.getAudioBuffer("https://github.com/DoraChad/nostalgia/blob/main/assets/gathu.flac").then((ab) => {
+            this.musicBuffer = ab;
+        })
+        polyModLoader.registerFuncMixin("pl" , MixinType.RELPACE, 'const e = this.getBuffer("music");', `const e = ActivePolyModLoader.getMod("nostalgia").musicBuffer`);
     };
 }
 
