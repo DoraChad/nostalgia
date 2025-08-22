@@ -3,7 +3,7 @@ import { PolyMod, MixinType } from "https://pml.orangy.cfd/PolyTrackMods/PolyMod
 class nostalgia extends PolyMod { 
     audioURLS = ["https://github.com/DoraChad/nostalgia/blob/main/assets/gathu.flac"];
     musicBuffer = null;
-    getAudioBuffer(url) {
+    getAudioBuffer = async function(url) {
         try {
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     
